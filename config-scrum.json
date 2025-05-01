@@ -1,0 +1,256 @@
+{
+  "source-project": "POCOITPROD",
+  "target-project": "PowerCo-Gateway (SZ)",
+  "query": "project = POCOITPROD AND issuetype in (Bug, 'Change Request', Epic, Improvement, 'New Feature', Task, Sub-task) AND status in (Open, 'In Progress', Reopened, 'In Analysis', Blocked, 'Manual Test', 'Automated Test') ORDER BY priority DESC, updated DESC",
+  "using-jira-cloud": false,
+  "workspace": "C:\\Users\\sschneider3\\Documents\\jira\\",
+  "epic-link-field": "Epic Link",
+  "sprint-field": "Sprint",
+  "download-options": 7,
+  "batch-size": 50,
+  "log-level": "Info",
+  "attachment-folder": "Attachments",
+  "user-mapping-file": "users.txt",
+  "base-area-path": "Migrated",
+  "base-iteration-path": "Migrated",
+  "ignore-failed-links": true,
+  "include-link-comments": false,
+  "include-jira-css-styles": false,
+  "ignore-empty-revisions": true,
+  "suppress-notifications": false,
+  "sleep-time-between-revision-import-milliseconds": 0,
+  "process-template": "Agile",
+  "link-map": {
+    "link": [
+      {
+        "source": "Epic",
+        "target": "System.LinkTypes.Hierarchy-Reverse"
+      },
+      {
+        "source": "Parent",
+        "target": "System.LinkTypes.Hierarchy-Reverse"
+      },
+      {
+        "source": "Child",
+        "target": "System.LinkTypes.Hierarchy-Forward"
+      },
+      {
+        "source": "Relates",
+        "target": "System.LinkTypes.Related"
+      },
+      {
+        "source": "Cloners",
+        "target": "System.LinkTypes.Related"
+      },
+      {
+        "source": "Duplicate",
+        "target": "System.LinkTypes.Duplicate-Forward"
+      }
+    ]
+  },
+  "type-map": {
+    "type": [
+      {
+        "source": "Feature",
+        "target": "Feature"
+      },
+      {
+        "source": "New Feature",
+        "target": "Feature"
+      },
+      {
+        "source": "Epic",
+        "target": "Epic"
+      },
+      {
+        "source": "Story",
+        "target": "User Story"
+      },
+      {
+        "source": "Bug",
+        "target": "Bug"
+      },
+      {
+        "source": "Improvement",
+        "target": "User Story"
+      },
+      {
+        "source": "Task",
+        "target": "User Story"
+      },
+      {
+        "source": "Change Request",
+        "target": "User Story"
+      },
+      {
+        "source": "Sub-task",
+        "target": "Task"
+      }
+      
+    ]
+  },
+  "field-map": {
+    "field": [
+      {
+        "source": "summary",
+        "target": "System.Title",
+        "mapper": "MapTitle"
+      },
+      {
+        "source": "assignee",
+        "target": "System.AssignedTo",
+        "mapper": "MapUser"
+      },
+      {
+        "source": "description",
+        "target": "System.Description",
+        "not-for": "Bug",
+        "mapper": "MapRendered"
+      },
+      {
+        "source": "priority",
+        "target": "Microsoft.VSTS.Common.Priority",
+        "mapping": {
+          "values": [
+            {
+              "source": "Blocker",
+              "target": "1"
+            },
+            {
+              "source": "Critical",
+              "target": "1"
+            },
+            {
+              "source": "Highest",
+              "target": "1"
+            },
+            {
+              "source": "Major",
+              "target": "2"
+            },
+            {
+              "source": "High",
+              "target": "2"
+            },
+            {
+              "source": "Medium",
+              "target": "3"
+            },
+            {
+              "source": "Low",
+              "target": "3"
+            },
+            {
+              "source": "Lowest",
+              "target": "4"
+            },
+            {
+              "source": "Minor",
+              "target": "4"
+            },
+            {
+              "source": "Trivial",
+              "target": "4"
+            }
+          ]
+        }
+      },
+      {
+        "source": "Sprint",
+        "source-type": "name",
+        "target": "System.IterationPath",
+        "mapper": "MapSprint"
+      },
+      {
+        "source": "labels",
+        "target": "System.Tags",
+        "mapper": "MapTags"
+      },
+      {
+        "source": "comment",
+        "target": "System.History",
+        "mapper": "MapRendered"
+      },
+      {
+        "source": "status",
+        "target": "System.State",
+        "for": "Bug,User Story,Task",
+        "mapping": {
+          "values": [
+            {
+              "source": "Open",
+              "target": "New"
+            },
+            {
+              "source": "Closed",
+              "target": "Closed"
+            },
+            {
+              "source": "In Review",
+              "target": "Closed"
+            },
+            {
+              "source": "Resolved",
+              "target": "Closed"
+            },
+            {
+              "source": "In Progress",
+              "target": "Active"
+            }, 
+            {
+              "source": "In Analysis",
+              "target": "In Analysis"
+            }, 
+            {
+              "source": "Manual Test",
+              "target": "Remote Test"
+            }, 
+            {
+              "source": "Automated Test",
+              "target": "Onsite Test"
+            }, 
+            {
+              "source": "Reopened",
+              "target": "New"
+            }, 
+            {
+              "source": "Blocked",
+              "target": "Blocked"
+            }
+          ]
+        }
+      },
+      {
+        "source": "status",
+        "target": "System.State",
+        "for": "Epic,Feature",
+        "mapping": {
+          "values": [
+            {
+              "source": "Open",
+              "target": "New"
+            },
+            {
+              "source": "Closed",
+              "target": "Closed"
+            },
+            {
+              "source": "In Progress",
+              "target": "Active"
+            },
+            {
+              "source": "Resolved",
+              "target": "Closed"
+            }
+          ]
+        }
+      },
+      {
+        "source": "description",
+        "target": "Microsoft.VSTS.TCM.ReproSteps",
+        "for": "Bug",
+        "mapper": "MapRendered"
+      }
+    ]
+  }
+}
